@@ -62,7 +62,7 @@ final class MenuItem
     public function getExtra(string $name, $default = null)
     {
         if (array_key_exists($name, $this->extra)) {
-            return $this->extra;
+            return $this->extra[$name];
         }
 
         return $default;
