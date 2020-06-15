@@ -7,7 +7,7 @@ namespace Happyr\MenuBuilderBundle\Model;
 final class MenuItem
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $route;
 
@@ -17,7 +17,7 @@ final class MenuItem
     private $routeParameters;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $label;
 
@@ -32,21 +32,21 @@ final class MenuItem
      */
     private $children;
 
-    public function __construct(string $label, string $route, array $routeParameters = [])
+    public function __construct(?string $label, ?string $route, array $routeParameters = [], array $extra = [])
     {
         $this->label = $label;
         $this->route = $route;
         $this->routeParameters = $routeParameters;
-        $this->extra = [];
+        $this->extra = $extra;
         $this->children = [];
     }
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    public function getRoute(): string
+    public function getRoute(): ?string
     {
         return $this->route;
     }
