@@ -1,0 +1,9 @@
+<ul class="menu">
+{% for menuItem in menuItems %}
+    <li>
+        <a href="{{ path(menuItem.route, menuItem.routeParameters) }}">
+            {{ menuItem.label }}
+        </a>
+    </li>
+{% endfor %}
+</ul>

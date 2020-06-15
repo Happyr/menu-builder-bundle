@@ -32,10 +32,10 @@ final class MenuItem
      */
     private $children;
 
-    public function __construct(string $label, string $url, array $routeParameters = [])
+    public function __construct(string $label, string $route, array $routeParameters = [])
     {
         $this->label = $label;
-        $this->route = $url;
+        $this->route = $route;
         $this->routeParameters = $routeParameters;
         $this->extra = [];
         $this->children = [];

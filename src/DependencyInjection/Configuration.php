@@ -18,6 +18,11 @@ class Configuration implements ConfigurationInterface
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
 
+        $rootNode
+            ->children()
+                ->scalarNode('template')->defaultValue('@HappyrMenuBuilder/menu.html.twig')->end()
+            ->end();
+        
         return $treeBuilder;
     }
 
