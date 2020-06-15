@@ -1,0 +1,35 @@
+{
+    "name": "happyr/menu-builder-bundle",
+    "type": "symfony-bundle",
+    "description": "Build menus easily",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nyholm",
+            "email": "tobias.nyholm@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "symfony/config": "^4.4 || ^5.0",
+        "symfony/dependency-injection": "^4.4 || ^5.0",
+        "symfony/http-kernel": "^4.4 || ^5.0",
+        "twig/twig": "^2.12.5 || ^3.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^4.4 || ^5.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Happyr\\MenuBuilderBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Happyr\\MenuBuilderBundle\\": "tests/"
+        }
+    }
+}
