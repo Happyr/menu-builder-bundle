@@ -1,6 +1,6 @@
 <ul class="menu">
 {% for menuItem in menuItems %}
-    <li>
+    <li{% if menuItem.route == route %} class="active"{% endif %}>
         <a href="{{ path(menuItem.route, menuItem.routeParameters) }}">
             {{ menuItem.label }}
         </a>

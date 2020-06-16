@@ -23,6 +23,7 @@ final class MenuItem
 
     /**
      * Any additional parameters like icon.
+     *
      * @var array
      */
     private $extra;
@@ -84,9 +85,6 @@ final class MenuItem
         return $this->children;
     }
 
-    /**
-     * @param array $children
-     */
     public function setChildren(array $children): void
     {
         $this->children = $children;

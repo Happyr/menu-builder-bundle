@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Happyr\MenuBuilderBundle;
 
 use Happyr\MenuBuilderBundle\Model\MenuItem;
