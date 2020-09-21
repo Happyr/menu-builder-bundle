@@ -28,15 +28,16 @@ final class MenuRuntime implements RuntimeExtensionInterface
     public function renderMenu(Environment $twig, string $name, array $options = []): string
     {
         $request = $this->requestStack->getMasterRequest();
-        if (null === $request) {
-            return '';
+        $route = null;
+        if (null !== $request) {
+            $route = $request->attributes->get('_route', null);
         }
 
         $menuItems = $this->builder->getMenu($name, $options);
 
         return $twig->render($options['template'] ?? $this->defaultTemplate, [
             'menuItems' => $menuItems,
-            'route' => $request->attributes->get('_route', ''),
+            'route' => $route,
             'options' => $options,
         ]);
     }
