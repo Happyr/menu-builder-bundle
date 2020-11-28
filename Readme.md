@@ -11,3 +11,5 @@ Much like Knp menu builder but way less complex
 ```
 composer require happyr/menu-builder-bundle
 ```
+
+Then create a class implementing `Happyr\MenuBuilderBundle\MenuBuilder`
