@@ -13,6 +13,7 @@ final class MenuItem
 
     /**
      * Is this the current page?
+     *
      * @var bool
      */
     private $active = false;

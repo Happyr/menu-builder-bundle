@@ -46,12 +46,10 @@ final class MenuRuntime implements RuntimeExtensionInterface
 
     /**
      * @param MenuItem[] $menuItems
-     * @param string|null $route
-     * @return bool
      */
     private function markAsActive(array $menuItems, ?string $route): bool
     {
-        if ($route === null) {
+        if (null === $route) {
             return false;
         }
 
