@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Happyr\MenuBuilderBundle\Twig;
 
 use Happyr\MenuBuilderBundle\MenuBuilder;
+use Happyr\MenuBuilderBundle\Model\MenuItem;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Environment;
 use Twig\Extension\RuntimeExtensionInterface;
@@ -27,18 +28,39 @@ final class MenuRuntime implements RuntimeExtensionInterface
 
     public function renderMenu(Environment $twig, string $name, array $options = []): string
     {
+        $menuItems = $this->builder->getMenu($name, $options);
+
         $request = $this->requestStack->getMasterRequest();
         $route = null;
         if (null !== $request) {
             $route = $request->attributes->get('_route', null);
+            $this->markAsActive($menuItems, $route);
         }
-
-        $menuItems = $this->builder->getMenu($name, $options);
 
         return $twig->render($options['template'] ?? $this->defaultTemplate, [
             'menuItems' => $menuItems,
             'route' => $route,
             'options' => $options,
         ]);
+    }
+
+    /**
+     * @param MenuItem[] $menuItems
+     */
+    private function markAsActive(array $menuItems, ?string $route): bool
+    {
+        if (null === $route) {
+            return false;
+        }
+
+        $returnValue = false;
+        foreach ($menuItems as $item) {
+            if ($route === $item->getRoute() || ($item->hasChildren() && $this->markAsActive($item->getChildren(), $route))) {
+                $item->setActive(true);
+                $returnValue = true;
+            }
+        }
+
+        return $returnValue;
     }
 }

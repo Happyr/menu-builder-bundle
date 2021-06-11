@@ -12,6 +12,13 @@ final class MenuItem
     private $route;
 
     /**
+     * Is this the current page?
+     *
+     * @var bool
+     */
+    private $active = false;
+
+    /**
      * @var array
      */
     private $routeParameters;
@@ -85,6 +92,11 @@ final class MenuItem
         return $this->children;
     }
 
+    public function hasChildren(): bool
+    {
+        return [] !== $this->children;
+    }
+
     public function setChildren(array $children): void
     {
         $this->children = $children;
@@ -93,5 +105,15 @@ final class MenuItem
     public function addChild(MenuItem $menuItem)
     {
         $this->children[] = $menuItem;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
     }
 }
